@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Apresentação de Exercícios - PyScript</title>
+
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <main>
+
+        <section class="exercicio">
+
+            <h1>Apresentação de Exercícios - EX001</h1>
+
+
+            <p>Conversão de Metros para centímetros e milímetros.</p>
+
+
+            <textarea id="codigoPython">
+
+nome = input('Qual é o seu nome?')
+
+altura = float(input('Qual é a sua altura?'))
+
+peso = float(input('Por fim, me informe o seu peso:'))
+
+
+imc = peso / (altura**2) #calculo de IMC
+
+
+#determinar a categoria do IMC
+
+
+if imc > 40:
+
+categoria = 'obesidade grau III'
+
+mensagem = 'Aqui o sinal é vermelho, com forte probabilidade de já existirem doenças muito graves associadas. O tratamento deve ser ainda mais urgente.'
+
+
+elif 35.0 <= imc <=39.9:
+
+categoria = 'obesidade grau II'
+
+mensagem = 'Mesmo que seus exames aparentem estar normais, é hora de se cuidar, iniciando mudanças no estilo de vida com o acompanhamento próximo de profissionais de saúde.'
+
+
+
+elif 30.0 <= imc <=34.9:
+
+categoria = 'obesidade grau I'
+
+mensagem = 'Sinal de alerta! Chegou na hora de se cuidar, mesmo que seus exames sejam normais. Vamos dar início a mudanças hoje! Cuide de sua alimentação. Você precisa iniciar um acompanhamento com nutricionista e/ou endocrinologista.'
+
+
+
+elif 25.0 <= imc <=29.9:
+
+categoria = 'sobrepeso'
+
+mensagem = 'Ele é, na verdade, uma pré-obesidade e muitas pessoas nessa faixa já apresentam doença associadas, como diabetes e hipertensão. Importante rever hábitos e buscar ajuda antes de, por uma série de fatores, entrar na faixa da obesidade pra valer.'
+
+
+elif 18.6 <= imc <=24.9:
+
+categoria = 'normal'
+
+mensagem = 'Que bom que você está com o peso normal! E o melhor jeito de continuar assim é mantendo um estilo de vida ativo e uma alimentação equilibrada.'
+
+
+else: # se não for nenhum outro só pode ser esse (IMC <=18.5)
+
+categoria = 'abaixo do normal'
+
+mensagem = 'Procure um médico. Algumas pessoas têm um baixo peso por características do seu organismo e tudo bem. Outras podem estar enfrentando problemas, como a desnutrição. É preciso saber qual é o caso.'
+
+
+
+print(f'\nOlá {nome}. Seu IMC é: {imc:.1f}')
+
+print(f'Categoria: {categoria}')
+
+print(mensagem)
+
+
+</textarea>
+
+            <br>
+
+            <button id="executar">Executar</button>
+
+
+            <h3>Saída:</h3>
+
+            <div id="output"></div>
+
+
+            <script>
+
+                async function executarCodigo() {
+
+                    let codigo = document.getElementById("codigoPython").value;
+
+                    let outputDiv = document.getElementById("output");
+
+
+                    // Inicializa o Pyodide se ainda não estiver carregado
+
+                    if (!window.pyodide) {
+
+                        outputDiv.innerText = "Carregando o interpretador Python...";
+
+                        window.pyodide = await loadPyodide();
+
+                        outputDiv.innerText = "";
+
+                    }
+
+
+                    try {
+
+                        // Redireciona a saída para capturar os prints
+
+                        window.pyodide.runPython(`
+
+import sys
+
+import io
+
+sys.stdout = io.StringIO()
+
+sys.stderr = io.StringIO()
+
+
+# Função para substituir input() pelo prompt() do JavaScript
+
+def input(prompt_text=""):
+
+import js
+
+return js.prompt(prompt_text)
+
+`);
+
+
+                        // Executa o código Python
+
+                        window.pyodide.runPython(codigo);
+
+
+                        // Obtém a saída do print()
+
+                        let resultado = window.pyodide.runPython("sys.stdout.getvalue()");
+
+                        outputDiv.innerText = resultado;
+
+                    } catch (error) {
+
+                        outputDiv.innerText = "Erro: " + error;
+
+                    }
+
+                }
+
+
+                // Adiciona evento ao botão
+
+                document.getElementById("executar").addEventListener("click", executarCodigo);
+
+            </script>
+
+        </section>
+
+
+    </main>
+
+</body>
+
+
+</html>
