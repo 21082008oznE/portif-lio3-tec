@@ -1,0 +1,219 @@
+/* Estilos específicos para a página de Banco de Dados */
+
+/* Estrutura base compartilhada com a página de Prog. Sistemas */
+body {
+    padding-top: 76px;
+}
+
+/* Estilo para o menu ativo */
+.nav-link.active {
+    color: #4a6bdb !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    bottom: 0;
+    left: 10%;
+    background-color: #4a6bdb;
+}
+
+/* Seção de introdução da disciplina */
+.discipline-intro {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+    border-bottom: 1px solid #e0e6f5;
+}
+
+.discipline-image-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 30px;
+}
+
+.discipline-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para os trimestres */
+.trimester-section {
+    padding: 50px 0;
+    border-bottom: 1px solid #e0e6f5;
+}
+
+.trimester-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.trimester-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: #34a853; /* Cor verde para diferenciar de Prog. Sistemas */
+    color: white;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Estilo para cada tópico */
+.topic-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.topic-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.topic-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #34a853; /* Cor verde para diferenciar de Prog. Sistemas */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e6f5;
+}
+
+.topic-description {
+    color: #4a5568;
+    margin-bottom: 25px;
+}
+
+/* Estilos para os cards de download de scripts */
+.download-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.download-card {
+    display: flex;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.download-card:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    background-color: #34a853;
+    color: white;
+    font-size: 2rem;
+    padding: 15px;
+}
+
+.download-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.download-content h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.download-description {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: #34a853;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #2d8a46;
+    transform: scale(1.05);
+    color: white;
+}
+
+/* Estilo para seções em desenvolvimento */
+.coming-soon-container {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.coming-soon-icon {
+    font-size: 3rem;
+    color: #a0aec0;
+    margin-bottom: 20px;
+}
+
+.coming-soon-text {
+    font-size: 1.5rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .discipline-intro {
+        padding: 40px 0;
+    }
+
+    .discipline-image-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .download-card {
+        flex-direction: column;
+    }
+
+    .file-icon {
+        min-width: 100%;
+        padding: 20px;
+    }
+
+    .trimester-title {
+        font-size: 1.5rem;
+    }
+
+    .topic-title {
+        font-size: 1.3rem;
+    }
+}
