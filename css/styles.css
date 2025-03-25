@@ -116,6 +116,7 @@ body {
 /* Seção de Projetos */
 .projects-section {
     padding: 60px 0;
+    background: linear-gradient(135deg, #000000 0%, #2f007b 100%);
 }
 
 .project-card {
