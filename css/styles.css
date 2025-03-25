@@ -53,7 +53,7 @@ body {
 /* Seção Hero */
 .hero-section {
     padding: 80px 0 40px;
-    background: #000000;
+    background: linear-gradient(135deg, #000000 0%, #2f007b 100%);
     border-bottom: 1px solid #e0e6f5;
 }
 
@@ -120,7 +120,7 @@ body {
 }
 
 .project-card {
-    background-color: #000;
+    background-color: #000 ;
     border-radius: 15px;
     padding: 30px 20px;
     height: 100%;
