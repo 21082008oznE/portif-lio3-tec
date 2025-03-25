@@ -4,7 +4,7 @@ body {
     color: #fff;
     line-height: 1.6;
     padding-top: 76px;
-    background-color: linear-gradient(90deg, #000000 0%, #2f007b 100%);
+    background: linear-gradient(0deg, #000000 0%, #2f007b 100%);
 }
 
 /* Navegação */
