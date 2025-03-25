@@ -62,6 +62,7 @@ body {
     width: 220px;
     height: 220px;
     margin: 0 auto 30px;
+    border-radius:  20%;
 }
 
 .profile-image {
