@@ -24,7 +24,7 @@ body {
 /* Seção de introdução da disciplina */
 .discipline-intro {
     padding: 60px 0;
-    background: linear-gradient(135deg, #f0f4ff 0%, #000000 100%);
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
     border-bottom: 1px solid #e0e6f5;
 }
 
