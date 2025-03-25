@@ -53,7 +53,7 @@ body {
 /* Seção Hero */
 .hero-section {
     padding: 80px 0 40px;
-    background: lineargradient(#abc, #cba);
+    background: lineargradient(#aaa, #bbb);
     border-bottom: 1px solid #e0e6f5;
 }
 
