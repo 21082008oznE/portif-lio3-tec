@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios Python</title>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="fixed-top shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Nome do Estudante</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="sistemas.html" class="nav-link menu-item"><i
+                                    class="fas fa-laptop-code me-2"></i>Prog. Des. Sistemas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="banco-dados.html" class="nav-link menu-item"><i class="fas fa-database me-2"></i>Banco de
+                                Dados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link menu-item"><i class="fas fa-mobile-alt me-2"></i>Prog.
+                                Mobile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="container py-5">
+        <div class="text-center py-4 text-light bg-dark">
+            <h1><i class="fab fa-python"></i> Exercícios Python - EX003</h1>
+
+            <section class="p-5 rounded text-light shadow-lg" id="terminal">
+                <h2 class="mb-3">Cálculo de Média Escolar</h2>
+                <p class="lead">Este programa calcula a média de três trimestres e informa se o aluno foi aprovado ou reprovado.</p>
+
+                <textarea id="codigoPython" class="form-control bg-dark text-success border-success p-3" rows="6">
+t1 = float(input("notas primeiro trimestre: "))
+t2 = float(input("notas segundo trimestre: "))
+t3 = float(input("notas terceiro trimestre: "))
+cal = t1+t2+t3
+cal= cal/3
+if cal>= 60:
+    print(f'passou com média de: {cal}')
+else:
+    print(f'reprovou com média de: {cal}')
+                </textarea>
+
+                <button id="executar" class="btn btn-success mt-3 w-100 fw-bold shadow"><i class="fas fa-play"></i>
+                    Executar Código</button>
+
+                <div class="mt-4 p-3 bg-black text-success rounded border border-success" id="output"
+                    style="min-height: 80px;"></div>
+            </section>
+
+             <!-- Seção de Dicas -->
+             <section class="dicas mt-4">
+                <h3>Dicas sobre o código</h3>
+                <ul>
+                    <li><strong>"float(input())"</strong>: Converte as notas digitadas em números decimais.</li>
+                    <li><strong>Soma e média</strong>: Soma as três notas e divide por 3 para calcular a média.</li>
+                    <li><strong>Estrutura condicional (if/else)</strong>: Verifica se a média é maior ou igual a 60 para aprovação.</li>
+                    <li><strong>f-strings</strong>: Formata a saída mostrando a média calculada.</li>
+                    <li><strong>Operadores aritméticos</strong>: Usados para cálculos (+ para soma, / para divisão).</li>
+                    <li><strong>Operadores de comparação</strong>: (>=) verifica se a média atingiu o mínimo.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        async function executarCodigo() {
+            let codigo = document.getElementById("codigoPython").value;
+            let outputDiv = document.getElementById("output");
+
+            if (!window.pyodide) {
+                outputDiv.innerText = "Carregando o interpretador Python...";
+                window.pyodide = await loadPyodide();
+                outputDiv.innerText = "";
+            }
+
+            try {
+                window.pyodide.runPython(`
+import sys
+import io
+sys.stdout = io.StringIO()
+sys.stderr = io.StringIO()
+
+def input(prompt_text=""):
+    import js
+    return js.prompt(prompt_text)
+                `);
+
+                window.pyodide.runPython(codigo);
+                let resultado = window.pyodide.runPython("sys.stdout.getvalue()");
+                outputDiv.innerText = resultado;
+            } catch (error) {
+                outputDiv.innerText = "Erro: " + error;
+            }
+        }
+        document.getElementById("executar").addEventListener("click", executarCodigo);
+    </script>
+</body>
+
+</html>
