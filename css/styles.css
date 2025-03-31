@@ -120,7 +120,7 @@ body {
 }
 
 .project-card {
-    background-color: #000 ;
+    background-color: linear-gradient(90deg, #000000 0%, #2f007b 100%);
     border-radius: 15px;
     padding: 30px 20px;
     height: 100%;
