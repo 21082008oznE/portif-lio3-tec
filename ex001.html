@@ -1,46 +1,192 @@
-<div class="container exercicio">
-    <div class="d-flex justify-content-between mb-4">
-        <h2 class="mb-3">EX005 - Manipulação de Listas</h2>
-        <div>
-            <span class="badge bg-secondary">Iniciante</span>
-            <span class="badge bg-success">Listas</span>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios Python</title>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="fixed-top shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Nome do Estudante</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="sistemas.html" class="nav-link menu-item"><i
+                                    class="fas fa-laptop-code me-2"></i>Prog. Des. Sistemas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="banco-dados.html" class="nav-link menu-item"><i class="fas fa-database me-2"></i>Banco de
+                                Dados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link menu-item"><i class="fas fa-mobile-alt me-2"></i>Prog.
+                                Mobile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="container py-5">
+        <div class="text-center py-4 text-light bg-dark">
+            <h1><i class="fab fa-python"></i> Exercícios Python - EX005</h1>
+
+            <section class="p-5 rounded text-light shadow-lg" id="terminal">
+                <h2 class="mb-3">IMC</h2>
+                <p class="lead">Este programa calcula o Índice de Massa Corporal (IMC) e fornece uma avaliação da condição de saúde com base no resultado.</p>
+
+                <textarea id="codigoPython" class="form-control bg-dark text-success border-success p-3" rows="25">
+nome = input('Qual o seu nome? ')
+altura = float(input('Qual a sua altura? '))
+peso = float(input('Qual o seu peso? '))
+
+imc = peso / (altura**2)
+
+if imc <= 18.5:
+    cond = '''abaixo do normal
+    
+    Procure um médico. 
+    Algumas pessoas têm um 
+    baixo peso por características 
+    do seu organismo e tudo bem. 
+    Outras podem estar enfrentando 
+    problemas, como a desnutrição. 
+    É preciso saber qual é o caso.
+    '''
+    
+elif imc >= 18.6 and imc <= 24.9:
+    cond = '''normal
+    
+    Que bom que você 
+    está com o peso normal! 
+    E o melhor jeito de 
+    continuar assim é mantendo 
+    um estilo de vida ativo e 
+    uma alimentação equilibrada.
+    '''
+
+elif imc >= 25 and imc <= 29.9:
+    cond = '''sobrepeso
+    
+    Ele é, na verdade, 
+    uma pré-obesidade e muitas 
+    pessoas nessa faixa já 
+    apresentam doenças associadas, 
+    como diabetes e hipertensão. 
+    Importante rever hábitos e 
+    buscar ajuda antes de, 
+    por uma série de fatores, 
+    entrar na faixa da obesidade pra valer.
+    '''
+
+elif imc >= 30 and imc <= 34.9:
+    cond = '''obesidade grau I
+    
+    Sinal de alerta! 
+    Chegou na hora de se cuidar, 
+    mesmo que seus exames sejam normais. 
+    Vamos dar início a mudanças hoje! 
+    Cuide de sua alimentação. 
+    Você precisa iniciar um 
+    acompanhamento com 
+    nutricionista e/ou endocrinologista.
+    '''
+
+elif imc >= 35 and imc <= 39.9:
+    cond = '''obesidade grau II
+    
+    Mesmo que seus exames 
+    aparentem estar normais, 
+    é hora de se cuidar,
+    iniciando mudanças no 
+    estilo de vida com o 
+    acompanhamento próximo de 
+    profissionais de saúde.
+    '''
+
+else:
+    cond = '''obesidade grau III
+
+    Aqui o sinal é vermelho, 
+    com forte probabilidade 
+    de já existirem doenças 
+    muito graves associadas. 
+    O tratamento deve ser ainda mais urgente.
+    '''
+
+print(f'Olá {nome}, o seu imc é de: {imc:.2f} pontos e a sua condição é {cond}')
+                </textarea>
+
+                <button id="executar" class="btn btn-success mt-3 w-100 fw-bold shadow"><i class="fas fa-play"></i>
+                    Executar Código</button>
+
+                <div class="mt-4 p-3 bg-black text-success rounded border border-success" id="output"
+                    style="min-height: 80px;"></div>
+            </section>
+
+             <!-- Seção de Dicas -->
+             <section class="dicas mt-4">
+                <h3>Dicas sobre o código</h3>
+                <ul>
+                    <li><strong>Cálculo do IMC</strong>: O IMC é calculado dividindo o peso (em kg) pela altura ao quadrado (em metros).</li>
+                    <li><strong>Estrutura condicional</strong>: O programa usa uma série de condições if/elif/else para classificar o IMC em diferentes categorias.</li>
+                    <li><strong>Strings multilinha</strong>: Utilizamos aspas triplas para criar strings que ocupam várias linhas, mantendo a formatação.</li>
+                    <li><strong>Formatação de números</strong>: O f-string <code>{imc:.2f}</code> exibe o IMC com 2 casas decimais.</li>
+                    <li><strong>Conversão de tipos</strong>: Convertemos a entrada do usuário para float usando <code>float(input())</code> para permitir cálculos matemáticos.</li>
+                    <li><strong>Saída formatada</strong>: O resultado final combina o nome do usuário, o valor do IMC e a condição de saúde em uma mensagem formatada.</li>
+                </ul>
+            </section>
         </div>
-    </div>
-    
-    <p class="lead">Crie um programa que manipule uma lista de números, realizando operações de adição, remoção e modificação de elementos.</p>
-    
-    <div class="mb-3">
-        <textarea id="codigoPython" class="form-control" rows="10"># Programa de manipulação de listas
-numeros = [10, 20, 30, 40, 50]
+    </main>
 
-# 1. Adicione o número 60 ao final da lista
-# Seu código aqui
+    <script>
+        async function executarCodigo() {
+            let codigo = document.getElementById("codigoPython").value;
+            let outputDiv = document.getElementById("output");
 
-# 2. Remova o número 20 da lista
-# Seu código aqui
+            if (!window.pyodide) {
+                outputDiv.innerText = "Carregando o interpretador Python...";
+                window.pyodide = await loadPyodide();
+                outputDiv.innerText = "";
+            }
 
-# 3. Substitua o número 30 por 35
-# Seu código aqui
+            try {
+                window.pyodide.runPython(`
+import sys
+import io
+sys.stdout = io.StringIO()
+sys.stderr = io.StringIO()
 
-# 4. Imprima a lista modificada
-print("Lista final:", numeros)</textarea>
-    </div>
-    
-    <button onclick="executarCodigo('codigoPython')" class="btn btn-primary mb-3">Executar</button>
-    
-    <div id="output" class="mb-3" style="display: none;">
-        <h5>Saída:</h5>
-        <pre id="output-content" class="bg-light p-3 rounded"></pre>
-    </div>
-    
-    <div class="dicas">
-        <h5>Dicas:</h5>
-        <ul>
-            <li>Use o método <code>append()</code> para adicionar elementos ao final da lista</li>
-            <li>Use o método <code>remove()</code> ou <code>pop()</code> para remover elementos</li>
-            <li>Você pode modificar um elemento específico usando seu índice: <code>lista[índice] = novo_valor</code></li>
-            <li>Lembre-se que os índices em Python começam em 0</li>
-            <li>Use <code>print()</code> para exibir a lista modificada</li>
-        </ul>
-    </div>
-</div>
+def input(prompt_text=""):
+    import js
+    return js.prompt(prompt_text)
+                `);
+
+                window.pyodide.runPython(codigo);
+                let resultado = window.pyodide.runPython("sys.stdout.getvalue()");
+                outputDiv.innerText = resultado;
+            } catch (error) {
+                outputDiv.innerText = "Erro: " + error;
+            }
+        }
+        document.getElementById("executar").addEventListener("click", executarCodigo);
+    </script>
+</body>
+
+</html>
