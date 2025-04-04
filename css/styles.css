@@ -274,3 +274,7 @@ footer h3 {
     color: #4a6bdb;
     margin-right: 10px;
 }
+
+.botoes-coloridos{
+    box-shadow: 20px 20px 20px 20px 20px #b00b69;
+}
