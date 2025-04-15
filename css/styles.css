@@ -275,7 +275,7 @@ footer h3 {
     margin-right: 10px;
 }
 
-.botoes-coloridos{
+.botoes-coloridos1{
     color: #fff;
     text-decoration: none;
     font-style: arial helvetica serif;
@@ -284,5 +284,17 @@ footer h3 {
     border: 50px #00ffff;
     border-radius: 30px;
     box-shadow: 0px 10px 12px #2b006f;
+
+}
+
+.botoes-coloridos2{
+    color: #fff;
+    text-decoration: none;
+    font-style: arial helvetica serif;
+    background-color: #157347;
+    padding: 12px;
+    border: 50px #00ffff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 12px #ff0000;
 
 }
