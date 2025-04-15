@@ -298,3 +298,15 @@ footer h3 {
     box-shadow: 0px 8px 12px #590000;
 
 }
+
+.botoes-coloridos3{
+    color: #fff;
+    text-decoration: none;
+    font-style: arial helvetica serif;
+    background-color: #FFCA2C;
+    padding: 12px;
+    border: 50px #00ffff;
+    border-radius: 30px;
+    box-shadow: 0px 8px 12px #590052;
+
+}
